@@ -43,6 +43,10 @@ const io = socketIO(server, {
     }
 });
 
+app.get('/rooms', (req, res) => {
+    res.send(JSON.stringify(io.sockets.adapter.rooms));
+});
+
 // listens on host:9090/metrics
 prometheus.metrics(io, {
     collectDefaultMetrics: true
